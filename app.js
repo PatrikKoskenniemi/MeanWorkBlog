@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './client/src')));
 app.use('/scripts', express.static(path.join(__dirname, './node_modules')));
 app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/api'));
 
 // app.listen(port, '0.0.0.0');
 // console.log("App listening on port : " + port);
