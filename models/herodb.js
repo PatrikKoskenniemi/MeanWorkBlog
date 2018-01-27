@@ -6,8 +6,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var heroSchema = new Schema({
-    id : Number,
-    name : String,
+    id: Number,
+    name: String,
 });
+/** @class Hero */
+var Hero = mongoose.model('Hero', heroSchema);
 
-module.exports = mongoose.model('herodb', heroSchema);
+module.exports = Hero;
