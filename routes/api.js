@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var BlogPost = require('../models/blogPost');
+var ObjectId = require('mongoose').Types.ObjectId;
 
-router.get('/heroes', function (req, res) {
-    res.json(getFakeHeroes());
+router.get('/blogPosts', function (req, res) {
+    BlogPost.find({ title: /^TestTitle2/ }, function (err, blogposts) {
+        if (err) return console.error(err);
+        console.log(blogposts)
+    });
 });
 
 router.post('/blogPost', function (req, res) {
@@ -19,14 +23,11 @@ router.post('/blogPost', function (req, res) {
     });
 });
 
-router.get('/heroes/:id', function (req, res) {
+router.get('/blogpost/:id', function (req, res) {
     console.log("PARAM: " + req.params.id);
-    getFakeHeroes().forEach(function (hero) {
-        console.log(hero.id + "<= id, " + hero.name);
-        if (hero.id === parseInt(req.params.id)) {
-            console.log("match!")
-            res.json(hero);
-        }
+    BlogPost.find({ _id: new ObjectId(req.params.id)}, function (err, blogposts) {
+        if (err) return console.error(err);
+        console.log(blogposts)
     });
     if (!res.headersSent)
         res.sendStatus(400);

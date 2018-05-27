@@ -1,4 +1,4 @@
-// app/models/todo.js
+// app/models/todo.js heroes
 
 // load mongoose since we need it to define a model
 var mongoose = require('mongoose');
@@ -12,5 +12,5 @@ var blogSchema = new Schema({
     type: String
 });
 /** @class BlogPost */
-var BlogPost = mongoose.model('BlogPost', blogSchema);
+var BlogPost = mongoose.model('blogposts', blogSchema);
 module.exports = BlogPost;
